@@ -1,4 +1,8 @@
 import streamlit as st
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from model.f1_lap_predictor import predict_japanese_gp, fetch_recent_data, train_and_evaluate
 import fastf1
 import pandas as pd
