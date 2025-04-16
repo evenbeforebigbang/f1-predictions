@@ -3,12 +3,16 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# FastF1 cache setup
+CACHE_DIR = os.path.join(os.path.dirname(__file__), 'cache')
+os.makedirs(CACHE_DIR, exist_ok=True)  # Creates directory if missing
+
 from model.f1_lap_predictor import predict_japanese_gp, fetch_recent_data, train_and_evaluate
 import fastf1
 import pandas as pd
 
-# Initialize cache
-fastf1.Cache.enable_cache('../cache')
+# Initialize cache (after imports)
+fastf1.Cache.enable_cache(CACHE_DIR)
 
 # App layout
 st.set_page_config(page_title="F1 Qualifying Predictor", layout="wide")
